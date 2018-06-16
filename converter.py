@@ -2,20 +2,29 @@ from bs4 import BeautifulSoup
 
 
 def is_convertable(file_url: str):
-	extension_position : int = file_url.rfind('.')
+	extension_position = file_url.rfind('.')
 	if extension_position == -1:
 		return False
 	else:
-		extension: str = file_url[extension_position + 1:]
+		extension = file_url[extension_position + 1:]
 		return extension == 'kml'
 
 
-def convert_file (file_url : str):
+def get_soup(file_url: str):
 	with open(file_url) as before_file:
-		soup: BeautifulSoup = BeautifulSoup(before_file, 'lxml-xml')
-		columns: list = soup.find_all('SimpleField')
+		soup = BeautifulSoup(before_file, 'lxml-xml')
 
-		print(columns)
+	return soup
+
+
+def extract_columns(soup: BeautifulSoup):
+	return [col.get('name') for col in soup.find_all('SimpleField')]
+
+
+def convert_file(file_url: str):
+	soup = get_soup(file_url)
+	columns = extract_columns(soup)
+	print(columns)
 
 
 def convert(file_url: str):
@@ -26,6 +35,7 @@ def convert(file_url: str):
 	else:
 		print('{} is not in the right format, please ensure that it is a .kml file'.format(file_url))
 
+
 convert('data/dengue-cases-central-kml.kml')
-convert('data/dengue-cases-central-kml')
-convert('test.xml')
+# convert('data/dengue-cases-central-kml')
+# convert('test.xml')
