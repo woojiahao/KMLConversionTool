@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import numpy as np
 
 
 def is_convertable(file_url: str):
@@ -21,17 +22,33 @@ def extract_columns(soup: BeautifulSoup):
 	return [col.get('name') for col in soup.find_all('SimpleField')]
 
 
+def extract_data(soup : BeautifulSoup):
+	result = ''
+	placemarks = soup.find_all('Placemark')
+	for placemark in placemarks:
+		extended_data = placemark.ExtendedData.SchemaData.find_all('SimpleData')
+		rows = np.ndarray.flatten(np.array([data.contents for data in extended_data])).tolist()
+		result += ','.join(rows)
+		result += '\n'
+	return result
+
+
 def convert_file(file_url: str):
+	contents = ''
+
 	soup = get_soup(file_url)
-	columns = extract_columns(soup)
-	print(columns)
+	contents += ','.join(extract_columns(soup))
+	contents += '\n'
+	contents += extract_data(soup)
+
+	return contents
 
 
 def convert(file_url: str):
 	file_url = file_url.replace('/', '\\')
 
 	if is_convertable(file_url):
-		convert_file(file_url)
+		converted = convert_file(file_url)
 	else:
 		print('{} is not in the right format, please ensure that it is a .kml file'.format(file_url))
 
