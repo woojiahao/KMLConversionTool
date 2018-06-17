@@ -1,17 +1,16 @@
 # KML to CSV Converter
 ## Description
 ### What is this?
-This is a KML converter that uses libraries like [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc) and [PyQt4](https://pypi.org/project/PyQt4/).
+This is a KML converter that uses libraries like [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc) and [TkInter](https://wiki.python.org/moin/TkInter).
 
 It aims to be able to convert KML files to other file types like CSV or to simply extract the coordinates part of the KML file.
 ### Why make it?
-I needed it for a school project that needed to analyse .csv files and thought it would be fun to take this opportunity to learn about PyQt.
+I needed it for a school project that needed to analyse .csv files and thought it would be fun to take this opportunity to learn about GUI programming in Python.
 
 ## Usage Guide
 ### Pre-requisites
 1. [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup)
-2. [PyQt4](https://riverbankcomputing.com/software/pyqt/download)
-3. [lxml](http://lxml.de/installation.html)
+2. [lxml](http://lxml.de/installation.html)
 
 #### Note that the file will be saved to the folder ~/Documents/KMLConverter/converted
 
