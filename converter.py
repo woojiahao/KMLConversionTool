@@ -1,9 +1,15 @@
+import os
+
 from bs4 import BeautifulSoup
 
 
 class Converter:
 	def _is_convertable(self, file_url: str):
 		extension_position = file_url.rfind('.')
+
+		if not os.path.exists(file_url):
+			return False
+
 		if extension_position == -1:
 			return False
 		else:
