@@ -45,6 +45,6 @@ class CSVConverter(Converter):
 		if self._is_convertable(file_url):
 			contents = self.__convert_file(file_url)
 			if contents.strip() != '':
-				self.__create_file(file_url, self.__convert_file(file_url))
+				self.__create_file(file_url, contents)
 		else:
 			print('{} is invalid, please ensure that it is a .kml file that exists'.format(file_url))
