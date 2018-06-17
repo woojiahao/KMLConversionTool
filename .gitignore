@@ -105,3 +105,4 @@ venv.bak/
 
 .idea/
 test.py
+data/dummy.kml
