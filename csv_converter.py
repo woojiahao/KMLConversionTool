@@ -43,6 +43,8 @@ class CSVConverter(Converter):
 		file_url = file_url.replace('/', '\\')
 
 		if self._is_convertable(file_url):
-			self.__create_file(file_url, self.__convert_file(file_url))
+			contents = self.__convert_file(file_url)
+			if contents.strip() != '':
+				self.__create_file(file_url, self.__convert_file(file_url))
 		else:
 			print('{} is invalid, please ensure that it is a .kml file that exists'.format(file_url))
