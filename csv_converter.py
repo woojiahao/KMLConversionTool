@@ -4,9 +4,13 @@ import numpy as np
 from bs4 import BeautifulSoup
 
 from converter import Converter
+from logger import Logger
 
 
 class CSVConverter(Converter):
+	def __init__(self):
+		self.logger = Logger()
+
 	def __extract_columns(self, soup: BeautifulSoup):
 		return [col.get('name') for col in soup.find_all('SimpleField')]
 
@@ -47,4 +51,4 @@ class CSVConverter(Converter):
 			if contents.strip() != '':
 				self.__create_file(file_url, contents)
 		else:
-			print('{} is invalid, please ensure that it is a .kml file that exists'.format(file_url))
+			self.logger.err('{} is invalid, please ensure that it is a .kml file that exists'.format(file_url))
