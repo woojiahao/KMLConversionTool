@@ -1,3 +1,3 @@
 class Logger:
-	def err(self, msg):
+	def err(self, msg: str):
 		print(msg)
