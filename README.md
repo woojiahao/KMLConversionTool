@@ -1,4 +1,5 @@
 # KML to CSV Converter
+The application currently has only been tested and should only work on a windows system, support for other OSs will be included in due time
 ## Description
 ### What is this?
 This is a KML converter that uses libraries like [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc) and [TkInter](https://wiki.python.org/moin/TkInter).
