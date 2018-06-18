@@ -1,3 +1,7 @@
+from tkinter import messagebox
+
 class Logger:
 	def err(self, msg: str):
-		print(msg)
+		messagebox.showerror(message = msg)
+	def suc(self, msg: str):
+		messagebox.showinfo(message = msg)

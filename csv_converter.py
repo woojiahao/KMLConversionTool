@@ -9,7 +9,7 @@ from logger import Logger
 
 class CSVConverter(Converter):
 	def __init__(self):
-		self.logger = Logger()
+		self.__logger = Logger()
 
 	def __extract_columns(self, soup: BeautifulSoup):
 		return [col.get('name') for col in soup.find_all('SimpleField')]
@@ -39,6 +39,8 @@ class CSVConverter(Converter):
 		with open(csv_url, 'w+') as new_file:
 			new_file.write(contents)
 
+		self.__logger.suc('Successfully converted the file, you can find it at {}'.format(csv_url))
+
 	def __convert_file(self, file_url: str):
 		soup = self._get_soup(file_url)
 		return '{}\n{}'.format(','.join(self.__extract_columns(soup)), self.__extract_data(soup))
@@ -51,4 +53,4 @@ class CSVConverter(Converter):
 			if contents.strip() != '':
 				self.__create_file(file_url, contents)
 		else:
-			self.logger.err('{} is invalid, please ensure that it is a .kml file that exists'.format(file_url))
+			self.__logger.err('{} is invalid, please ensure that it is a .kml file that exists'.format(file_url))
