@@ -30,7 +30,10 @@ class CSVConverter(Converter):
 			kml_url = kml_url[prefix + 1:]
 
 		csv_url = kml_url.replace('.kml', '.csv')
-		destination_folder = os.path.expanduser('~\\Documents\\KMLConverter\\converted\\csv\\')
+		try:
+			destination_folder = os.path.expanduser('~\\Documents\\KMLConverter\\converted\\csv\\')
+		except OSError:
+			self.__logger.err('Error in converting file path')
 		csv_url = '{}{}'.format(destination_folder, csv_url)
 
 		if not os.path.exists(destination_folder):
