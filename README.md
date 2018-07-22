@@ -17,15 +17,14 @@ I needed it for a school project that needed to analyse .csv files and thought i
 
 #### Note that the file will be saved to the folder ~/Documents/KMLConverter/converted
 
-### To use the application, download the repository and run it using an IDE like PyCharm or Jupyter Notebook (untested), I will be adding support to launch this as an .exe or perhaps as a normal script in due time.
-
-### ~~Using the GUI~~
-1. Navigate to the folder with the file `main_window.py`
-2. Run the file and the GUI will appear
-3. Select the file that you want to convert
-4. Select the convert options
-5. Press the convert button
-6. You will see a confirmation message if there were no conversion errors
+### Using the GUI
+1. Ensure that you have all the libraries needed downloaded
+2. Navigate to the folder with the file `main_window.py`
+3. Run the file and the GUI will appear
+4. Select the file that you want to convert
+5. Select the convert options
+6. Press the convert button
+7. You will see a confirmation message if there were no conversion errors
 
 ```bash
 cd KMLConverter/
